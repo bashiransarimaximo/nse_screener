@@ -1,0 +1,15 @@
+{
+  "name": "nse-screener-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev:server": "pnpm --filter @nse/server run dev",
+    "dev:client": "pnpm --filter @nse/client run dev",
+    "build:server": "pnpm --filter @nse/server run build",
+    "build": "pnpm run build:server && pnpm --filter @nse/client run build",
+    "db:push": "cd packages/db && DATABASE_URL=$DATABASE_URL npx drizzle-kit push"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3"
+  }
+}

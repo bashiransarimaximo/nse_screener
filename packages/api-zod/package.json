@@ -1,0 +1,12 @@
+{
+  "name": "@nse/api-zod",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "zod": "^3.25.64"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@nse/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "push": "drizzle-kit push"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.2",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.14",
+    "drizzle-kit": "^0.31.1"
+  }
+}
