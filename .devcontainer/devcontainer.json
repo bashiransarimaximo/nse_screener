@@ -1,0 +1,45 @@
+{
+  "name": "NSE Momentum Screener",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+
+  "postCreateCommand": "npm install -g pnpm@9 && pnpm install && docker run -d --name nse-pg -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=nse_screener -p 5432:5432 postgres:16 && sleep 3 && DATABASE_URL=postgresql://postgres:postgres@localhost:5432/nse_screener pnpm run db:push",
+
+  "forwardPorts": [3000, 5000],
+
+  "portsAttributes": {
+    "3000": {
+      "label": "Frontend (React)",
+      "onAutoForward": "openBrowser"
+    },
+    "5000": {
+      "label": "API Server (Express)"
+    }
+  },
+
+  "remoteEnv": {
+    "DATABASE_URL": "postgresql://postgres:postgres@localhost:5432/nse_screener",
+    "PORT": "5000"
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "prisma.prisma"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  }
+}
